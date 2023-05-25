@@ -3,14 +3,14 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 export default function App() {
   const [people, setPeople] = useState([
-    { name: 'Alain', key: '1' },
-    { name: 'Tomas', key: '2' },
-    { name: 'Carine', key: '3' },
-    { name: 'Genevieve', key: '4' },
-    { name: 'Genevieve', key: '5' },
-    { name: 'Genevieve', key: '6' },
-    { name: 'Genevieve', key: '7' },
-    { name: 'Henriette', key: '8' },
+    { name: 'Alain', id: '1' },
+    { name: 'Tomas', id: '2' },
+    { name: 'Carine', id: '3' },
+    { name: 'Genevieve', id: '4' },
+    { name: 'Genevieve', id: '5' },
+    { name: 'Genevieve', id: '6' },
+    { name: 'Genevieve', id: '7' },
+    { name: 'Henriette', id: '8' },
   ]);
 
   return (
@@ -28,6 +28,8 @@ export default function App() {
         renderItem={({item}) => (
           <Text style={styles.item}>{item.name}</Text>
         )}
+        keyExtractor={item => item.id}
+        numColumns={2}
       />
     </View>
   );
@@ -46,6 +48,8 @@ const styles = StyleSheet.create({
     marginTop: 24,
     padding: 30,
     backgroundColor: 'pink',
-    fontSize: 24
+    fontSize: 24,
+    marginHorizontal: 10,
+    marginTop: 24
   }
 });
