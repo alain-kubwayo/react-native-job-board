@@ -1,18 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function App() {
+  const [name, setName] = useState('alain');
+  const [person,setPerson] = useState({ name: 'tom', age: 40 })
+
+  const pressHandler = () => {
+    setName("james");
+    setPerson({ name: 'clementine', age: 23 })
+  } 
+
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.boldText}>Hello, World</Text>
+      <Text>My name: {name}</Text>
+      <Text>His name is {person.name} and he is {person.age} years old.</Text>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="update state" 
+          onPress={pressHandler}
+        />
       </View>
-      <View style={styles.body}>
-        <Text style={styles.boldText}>Lorem <Text>test</Text> ipsum dolor sit amet consectetur adipisicing elit. Laboriosam esse dolores provident maiores inventore et dicta saepe perferendis tempora libero odit voluptas suscipit hic laborum earum soluta iure, dolore temporibus!</Text>
-        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam esse dolores provident maiores inventore et dicta saepe perferendis tempora libero odit voluptas suscipit hic laborum earum soluta iure, dolore temporibus!</Text>
-        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam esse dolores provident maiores inventore et dicta saepe perferendis tempora libero odit voluptas suscipit hic laborum earum soluta iure, dolore temporibus!</Text>
-      </View>
-      <StatusBar style="auto" />
     </View>
   );
 }
@@ -24,15 +31,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  header: {
-    backgroundColor: 'pink',
-    padding: 20
-  },
-  boldText: {
-    fontWeight: 'bold',
-  },
-  body: {
-    backgroundColor: 'yellow',
-    padding: 20,
+  buttonContainer: {
+    marginTop: 20,
   }
 });
