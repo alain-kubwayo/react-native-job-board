@@ -1,12 +1,16 @@
 import { useState } from "react";
 
-import { View, Text, ScrollView, SafeAreaView, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, SafeAreaView, TouchableOpacity, Button } from "react-native";
 
 import { Stack, useRouter } from "expo-router";
 
 export default function Home() {
 
     const router = useRouter();
+
+    const pressHandler = () => {
+        router.push('/about');
+    }
 
     return (
         <SafeAreaView>
@@ -19,12 +23,10 @@ export default function Home() {
                 }} 
             />
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View>
-                    <Text>Welcome</Text>
-                </View>
-                <TouchableOpacity onPress={() => router.push('/about')}>
-                <Text>About Screen</Text>
-            </TouchableOpacity>
+                <Button
+                    title='Go to review details' 
+                    onPress={pressHandler}
+                />
             </ScrollView>
         </SafeAreaView>
     )
